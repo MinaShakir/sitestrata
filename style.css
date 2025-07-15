@@ -1,9 +1,3 @@
-Okay, I understand completely. I will make precisely those two changes to your CSS code, targeting the images within the project gallery (.image-pair-gallery img and .walkway-gallery img.project-img) to allow them to display side-by-side on mobile, and centering the paragraphs within the project gallery items.
-
-Here is your updated CSS:
-
-CSS
-
 /* --- Global Styles & Variables --- */
 :root {
     --primary-color: #212121; /* Dark grey/black for main elements and dark text */
