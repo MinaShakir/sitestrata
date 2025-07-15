@@ -384,7 +384,6 @@ section {
     text-align: left;
 }
 
-/* !!! MODIFICATION START - Portfolio Headings Centered !!! */
 .portfolio-item h3 {
     font-size: 1.8em;
     color: var(--primary-color);
@@ -393,7 +392,6 @@ section {
     padding-bottom: 10px;
     text-align: center; /* Centered as requested */
 }
-/* !!! MODIFICATION END !!! */
 
 .portfolio-item h3::after {
     content: '';
@@ -422,10 +420,27 @@ section {
 .image-pair-gallery img {
     max-width: 100%;
     height: auto;
-    width: 35%; /* ORIGINAL: 45%. Made smaller for desktop project gallery images */
+    width: 35%; /* Desktop width for general project gallery images */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+/* !!! MODIFICATION START - Walkway Gallery Image Width for DESKTOP !!! */
+.walkway-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.walkway-gallery img.project-img { /* Target img with class project-img inside walkway-gallery */
+    max-width: 100%; /* Ensures image scales down */
+    height: auto; /* Maintains aspect ratio */
+    width: 35%; /* Adjusted to match other gallery images for side-by-side on desktop */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+/* !!! MODIFICATION END !!! */
 
 .cta-bottom-portfolio {
     margin-top: 50px;
@@ -759,6 +774,7 @@ section {
     .image-pair-gallery img {
         width: 45%; /* Adjusted to be slightly smaller for tablets */
     }
+    /* !!! No change here for walkway images, as the desktop rule handles it, and mobile is separate !!! */
     h2 { /* Adjust main section headings */
         font-size: 2.2em;
     }
@@ -943,7 +959,7 @@ section {
         left: 0; /* Keep underline left-aligned within the card */
         transform: translateX(0);
     }
-    /* !!! MODIFICATION START - Images for side-by-side on mobile !!! */
+    /* Images for side-by-side on mobile - NO CHANGE TO THESE MOBILE RULES */
     .image-pair-gallery {
         /* Removed flex-direction: column; and align-items: center; to allow side-by-side */
         gap: 15px; /* Keep reduced gap */
@@ -959,7 +975,6 @@ section {
     .walkway-gallery img.project-img {
         width: 48%; /* Adjusted width for two images side-by-side on mobile */
     }
-    /* !!! MODIFICATION END !!! */
 
     .cta-bottom-portfolio {
         font-size: 1em;
@@ -1070,14 +1085,13 @@ section {
     h3 {
         font-size: 1.1em;
     }
-    /* !!! MODIFICATION START - Images for side-by-side on very small mobile screens !!! */
+    /* Images for side-by-side on very small mobile screens - NO CHANGE TO THESE MOBILE RULES */
     .image-pair-gallery img {
         width: 48%; /* Keep side-by-side on very small screens */
     }
     .walkway-gallery img.project-img {
         width: 48%; /* Keep side-by-side on very small screens */
     }
-    /* !!! MODIFICATION END !!! */
     .service-list-grid h3 {
         font-size: 1em; /* Further reduce font size for very small screens */
     }
