@@ -186,7 +186,7 @@ section {
 .hero-section {
     position: relative;
     /* IMPORTANT: REPLACE 'path/to/your/hero-background.jpg' WITH YOUR ACTUAL IMAGE PATH */
-    background-image: url('path/to/your/hero-background.jpg');
+    background-image: url('repair.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 0 80px;
