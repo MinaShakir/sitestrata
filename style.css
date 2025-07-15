@@ -1,3 +1,9 @@
+Okay, I understand completely. I will make precisely those two changes to your CSS code, targeting the images within the project gallery (.image-pair-gallery img and .walkway-gallery img.project-img) to allow them to display side-by-side on mobile, and centering the paragraphs within the project gallery items.
+
+Here is your updated CSS:
+
+CSS
+
 /* --- Global Styles & Variables --- */
 :root {
     --primary-color: #212121; /* Dark grey/black for main elements and dark text */
@@ -402,11 +408,14 @@ section {
     background-color: var(--secondary-color);
 }
 
+/* !!! MODIFICATION START !!! */
 .portfolio-item p {
     margin-bottom: 20px;
     line-height: 1.7;
     color: var(--text-dark);
+    text-align: center; /* Aligned paragraphs to center as requested */
 }
+/* !!! MODIFICATION END !!! */
 
 .image-pair-gallery {
     display: flex;
@@ -939,14 +948,24 @@ section {
         left: 0; /* Keep underline left-aligned within the card */
         transform: translateX(0);
     }
+    /* !!! MODIFICATION START - Images for side-by-side on mobile !!! */
     .image-pair-gallery {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px; /* Reduce gap */
+        /* Removed flex-direction: column; and align-items: center; to allow side-by-side */
+        gap: 15px; /* Keep reduced gap */
     }
     .image-pair-gallery img {
-        width: 80%; /* Made smaller for mobile project gallery images */
+        width: 48%; /* Adjusted width for two images side-by-side on mobile */
     }
+    .walkway-gallery {
+        /* Ensuring it allows side-by-side as well */
+        /* Removed flex-direction: column; and align-items: center; if they were ever here */
+        gap: 15px; /* Keep reduced gap */
+    }
+    .walkway-gallery img.project-img {
+        width: 48%; /* Adjusted width for two images side-by-side on mobile */
+    }
+    /* !!! MODIFICATION END !!! */
+
     .cta-bottom-portfolio {
         font-size: 1em;
     }
@@ -1056,9 +1075,14 @@ section {
     h3 {
         font-size: 1.1em;
     }
+    /* !!! MODIFICATION START - Images for side-by-side on very small mobile screens !!! */
     .image-pair-gallery img {
-        width: 90%; /* Slight adjustment for very small screens if 80% is too small */
+        width: 48%; /* Keep side-by-side on very small screens */
     }
+    .walkway-gallery img.project-img {
+        width: 48%; /* Keep side-by-side on very small screens */
+    }
+    /* !!! MODIFICATION END !!! */
     .service-list-grid h3 {
         font-size: 1em; /* Further reduce font size for very small screens */
     }
