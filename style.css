@@ -23,12 +23,13 @@ body {
     background-color: #ffffff; /* Main page background is white */
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll on smaller screens */
 }
 
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Default side padding for larger screens */
 }
 
 a {
@@ -97,6 +98,8 @@ section {
     justify-content: flex-end;
     align-items: center;
     gap: 25px;
+    flex-wrap: wrap; /* Allow items to wrap on small screens */
+    justify-content: center; /* Center them when they wrap */
 }
 
 .top-contact span {
@@ -119,11 +122,12 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow logo and hamburger to wrap */
 }
 
 .logo {
     display: flex;
-    align-items: center;
+    align-items: center; /* Ensures vertical alignment of logo image and text */
     gap: 10px;
 }
 
@@ -132,10 +136,14 @@ section {
     max-width: unset;
 }
 
+.logo-text-wrapper {
+    line-height: 1; /* Ensure tight line height for logo text */
+}
+
 .logo-text-wrapper h1,
 .logo-text-wrapper h2 {
-    margin: 0;
-    line-height: 1;
+    margin: 0; /* Remove default margins */
+    line-height: 1; /* Ensure tight line height */
     font-size: 1.5em;
     color: var(--primary-color); /* Logo text is dark grey/black */
 }
@@ -174,7 +182,7 @@ section {
 
 /* Hamburger Menu (Hidden by default on desktop) */
 .hamburger-menu {
-    display: none;
+    display: none; /* Hidden on desktop */
     background: none;
     border: none;
     color: var(--primary-color); /* Hamburger icon is dark grey/black */
@@ -202,7 +210,6 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Overlay for readability on any hero image */
     background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
     z-index: 1;
 }
@@ -277,10 +284,14 @@ section {
 
 .service-list-grid h3 {
     color: var(--primary-color);
-    font-size: 1.3em;
+    font-size: 1.3em; /* Desktop size for service heading */
     margin-bottom: 10px;
     position: relative;
     padding-bottom: 10px;
+    overflow: hidden; /* Ensures text doesn't overflow */
+    text-overflow: ellipsis; /* Adds "..." if text is too long */
+    white-space: normal; /* Allows text to wrap naturally */
+    word-wrap: break-word; /* Ensures long words break to the next line */
 }
 
 .service-list-grid h3::after {
@@ -296,6 +307,8 @@ section {
 .service-list-grid p {
     color: var(--text-dark);
     font-size: 0.95em;
+    line-height: 1.6; /* Improved readability for paragraphs */
+    word-wrap: break-word; /* Ensures long words break to the next line */
 }
 
 /* --- About Section (Default styling) --- */
@@ -405,7 +418,7 @@ section {
 .image-pair-gallery img {
     max-width: 100%;
     height: auto;
-    width: 45%;
+    width: 35%; /* ORIGINAL: 45%. Made smaller for desktop project gallery images */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -559,7 +572,7 @@ section {
 
 .footer-column .logo-footer {
     display: flex;
-    align-items: center;
+    align-items: center; /* Ensures vertical alignment of footer logo image and text */
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -717,9 +730,18 @@ section {
 }
 
 /* --- Responsive Design (Adjust breakpoints as needed) --- */
+
+/* For devices smaller than 992px (e.g., tablets, larger phones) */
 @media (max-width: 992px) {
+    .container {
+        padding: 0 15px; /* Slightly reduce padding on container for more space */
+    }
+
     .nav-links {
         gap: 20px;
+    }
+    .hero-section {
+        padding: 80px 0 60px; /* Adjust hero padding */
     }
     .hero-section h1 {
         font-size: 3em;
@@ -731,26 +753,61 @@ section {
         min-width: 200px;
     }
     .image-pair-gallery img {
-        width: 48%;
+        width: 45%; /* Adjusted to be slightly smaller for tablets */
+    }
+    h2 { /* Adjust main section headings */
+        font-size: 2.2em;
     }
 }
 
+/* For devices smaller than 768px (e.g., most smartphones in landscape or portrait, small tablets) */
 @media (max-width: 768px) {
-    .top-contact {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
+    .container {
+        padding: 0 15px; /* Consistent padding */
     }
 
+    .top-bar {
+        padding: 8px 0; /* Reduce top bar padding */
+    }
+    .top-contact {
+        flex-direction: column; /* Stack contact info vertically */
+        align-items: center;
+        gap: 10px;
+    }
+
+    .main-nav {
+        padding: 15px 0; /* Adjust nav padding */
+    }
     .main-nav .container {
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Reduce gap between logo and hamburger */
     }
 
     .logo {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        flex-grow: 1; /* Allow logo to grow */
+        justify-content: flex-start;
+        order: 1; /* Keep logo first */
+    }
+    .logo img {
+        height: 50px; /* Slightly smaller logo on mobile */
+    }
+    .logo-text-wrapper h1 {
+        font-size: 1.3em; /* Smaller logo title */
+    }
+    .logo-text-wrapper h2 {
+        font-size: 0.9em; /* Smaller logo subtitle */
+    }
+
+
+    .hamburger-menu {
+        display: block;
+        position: static;
+        margin-left: auto; /* Push to the right */
+        order: 2; /* Keep hamburger second */
+        font-size: 1.6em; /* Adjust hamburger icon size */
     }
 
     .nav-links {
@@ -759,72 +816,190 @@ section {
         width: 100%;
         text-align: center;
         gap: 10px;
-        background-color: #ffffff; /* Mobile nav menu background is white */
+        background-color: #ffffff;
         border-top: 1px solid var(--border-color);
+        padding: 15px 0;
+        order: 3; /* Make mobile nav links appear below logo/hamburger */
     }
     .nav-links.active {
         display: flex;
     }
     .nav-links a {
-        padding: 8px 0;
-        color: var(--primary-color); /* Mobile nav links are dark grey/black */
+        padding: 10px 0; /* Increase touch area for links */
+        color: var(--primary-color);
     }
     .nav-links a::after {
         left: 50%;
         transform: translateX(-50%);
     }
 
-    .hamburger-menu {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        color: var(--primary-color); /* Hamburger icon is dark grey/black */
-    }
-
     .hero-section {
-        padding: 80px 0 60px;
+        padding: 60px 0 40px; /* Further reduce hero padding on smaller phones */
+        min-height: 300px;
+    }
+    .hero-content {
+        text-align: center; /* Center hero content on small screens */
+        max-width: 90%; /* Constrain width for better readability */
+        margin: 0 auto; /* Center the block */
     }
     .hero-section h1 {
-        font-size: 2.5em;
+        font-size: 2em; /* Smaller hero heading */
     }
     .hero-subtitle {
-        font-size: 1.3em;
+        font-size: 1.2em; /* Smaller hero subtitle */
     }
     .hero-description {
-        font-size: 1em;
+        font-size: 0.95em; /* Smaller hero description */
     }
     .btn-primary {
         padding: 10px 20px;
         font-size: 0.9em;
     }
 
+    section {
+        padding: 40px 0; /* Reduce section padding */
+    }
+    h2 { /* Main section headings */
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    h3 { /* Sub-headings */
+        font-size: 1.2em;
+    }
+
     .services-overview h2 {
-        font-size: 2em;
+        font-size: 2em; /* Keep a bit larger */
     }
 
     .service-list-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack service cards */
+        gap: 20px; /* Reduce gap */
+    }
+    .service-list-grid > div {
+        padding: 20px; /* Adjust card padding */
     }
 
+    .service-list-grid h3 {
+        font-size: 1.1em; /* Reduced font size for mobile service heading */
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+    .service-list-grid h3::after {
+        width: 30px; /* Slightly shorter underline on mobile */
+    }
+    .service-list-grid p {
+        font-size: 0.9em; /* Smaller font size for service paragraphs on mobile */
+    }
+
+
+    /* ABOUT US SECTION ALIGNMENT */
+    #about {
+        text-align: center;
+    }
+    #about p {
+        text-align: center;
+        max-width: 90%; /* Adjust max-width for better fit */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* NDIS SECTION ALIGNMENT */
+    #ndis {
+        padding: 40px 0; /* Adjust padding */
+    }
+    .ndis-content-wrapper {
+        padding: 15px; /* Adjust card padding */
+    }
+    #ndis h2 {
+        font-size: 1.8em;
+    }
+    #ndis p {
+        text-align: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* PORTFOLIO SECTION ALIGNMENT */
+    .portfolio {
+        padding: 40px 0;
+    }
+    .portfolio > p {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+    .portfolio-item {
+        text-align: left;
+        padding: 20px;
+    }
+    .portfolio-item h3 {
+        font-size: 1.5em; /* Smaller portfolio item titles */
+    }
+    .portfolio-item h3::after {
+        left: 0; /* Keep underline left-aligned within the card */
+        transform: translateX(0);
+    }
     .image-pair-gallery {
         flex-direction: column;
         align-items: center;
+        gap: 15px; /* Reduce gap */
     }
     .image-pair-gallery img {
-        width: 90%;
+        width: 80%; /* Made smaller for mobile project gallery images */
+    }
+    .cta-bottom-portfolio {
+        font-size: 1em;
     }
 
+    /* TESTIMONIALS SECTION */
+    .testimonials {
+        padding: 40px 0;
+    }
     .testimonial-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .testimonial-item {
+        padding: 25px; /* Adjust padding */
+        text-align: center; /* Center text within testimonial */
+    }
+    .testimonial-author {
+        text-align: center; /* Center author name */
     }
 
+    /* CONTACT SECTION */
+    .contact-section {
+        padding: 40px 0;
+    }
+    .contact-form {
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .form-group label {
+        font-size: 0.95em;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        padding: 10px; /* Slightly smaller input fields */
+        font-size: 0.95em;
+    }
+    .contact-form .btn-primary {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    /* FOOTER */
+    .site-footer {
+        padding: 30px 0 15px; /* Adjust footer padding */
+    }
     .footer-content {
         flex-direction: column;
-        gap: 25px;
+        gap: 20px; /* Reduce gap between columns */
+        padding-bottom: 20px;
     }
     .footer-column {
-        min-width: unset;
         width: 100%;
         text-align: center;
     }
@@ -836,8 +1011,6 @@ section {
         transform: translateX(-50%);
     }
     .footer-column ul {
-        display: flex;
-        flex-direction: column;
         align-items: center;
     }
     .contact-info-footer p {
@@ -846,17 +1019,26 @@ section {
     .social-links {
         justify-content: center;
     }
+    .footer-bottom {
+        padding-top: 15px;
+        font-size: 0.8em;
+    }
 }
 
+/* For very small screens (e.g., iPhone SE, older phones) */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 10px; /* Even tighter padding for very small screens */
+    }
+
     .hero-section h1 {
-        font-size: 2em;
+        font-size: 1.8em;
     }
     .hero-subtitle {
-        font-size: 1.1em;
+        font-size: 1em;
     }
     .hero-description {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
     .cookie-consent {
         flex-direction: column;
@@ -866,6 +1048,21 @@ section {
         max-width: unset;
     }
     .contact-form {
-        padding: 20px;
+        padding: 15px;
+    }
+    h2 {
+        font-size: 1.6em; /* Smaller headings for very small screens */
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+    .image-pair-gallery img {
+        width: 90%; /* Slight adjustment for very small screens if 80% is too small */
+    }
+    .service-list-grid h3 {
+        font-size: 1em; /* Further reduce font size for very small screens */
+    }
+    .service-list-grid p {
+        font-size: 0.85em; /* Further reduce font size for service paragraphs on very small screens */
     }
 }
