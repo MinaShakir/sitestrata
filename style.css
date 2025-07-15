@@ -210,7 +210,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    /* INCREASED DARKNESS OF THE OVERLAY */
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%); /* Adjusted opacity values */
     z-index: 1;
 }
 
@@ -228,7 +229,7 @@ section {
 .hero-content {
     max-width: 600px;
     color: #fff; /* Hero text remains white for strong contrast */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9); /* Slightly stronger text shadow for better pop */
 }
 
 .hero-section h1 {
@@ -311,13 +312,19 @@ section {
     word-wrap: break-word; /* Ensures long words break to the next line */
 }
 
-/* --- About Section (Default styling) --- */
+/* --- About Section --- */
 #about {
     background-color: #ffffff;
     color: var(--text-dark);
+    text-align: center; /* Ensures the section content (like the heading) is centered */
 }
+
 #about p {
     margin-bottom: 1em;
+    text-align: center; /* ALIGN PARAGRAPH TEXT TO CENTER */
+    max-width: 800px; /* Limit width for readability on large screens */
+    margin-left: auto;   /* Center the paragraph block */
+    margin-right: auto;  /* Center the paragraph block */
 }
 
 
@@ -418,7 +425,7 @@ section {
 .image-pair-gallery img {
     max-width: 100%;
     height: auto;
-    width: 35%; /* ORIGINAL: 45%. Made smaller for desktop project gallery images */
+    width: 28%; /* Made even smaller for desktop */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -503,48 +510,20 @@ section {
     color: #d35400;
 }
 
-.contact-form {
-    max-width: 600px;
-    margin: 40px auto 0;
-    padding: 30px;
-    background-color: #f5f5f5; /* Light grey background for the form */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: left;
+/* Added styles for social links in contact section if you choose to include them */
+.social-links-contact-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px; /* Adjust as needed */
 }
-
-.form-group {
-    margin-bottom: 20px;
+.social-links-contact-section a {
+    font-size: 1.8em; /* Adjust size */
+    color: var(--primary-color); /* Match main text color */
+    transition: color 0.3s ease;
 }
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: var(--font-family-primary);
-    font-size: 1em;
-    color: var(--text-dark); /* Input text is dark */
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-.contact-form .btn-primary {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1em;
+.social-links-contact-section a:hover {
+    color: var(--secondary-color);
 }
 
 
@@ -753,7 +732,7 @@ section {
         min-width: 200px;
     }
     .image-pair-gallery img {
-        width: 45%; /* Adjusted to be slightly smaller for tablets */
+        width: 40%; /* Adjusted for tablet to still allow two images side-by-side if desired */
     }
     h2 { /* Adjust main section headings */
         font-size: 2.2em;
@@ -837,6 +816,10 @@ section {
         padding: 60px 0 40px; /* Further reduce hero padding on smaller phones */
         min-height: 300px;
     }
+    .hero-overlay {
+        /* Adjust overlay for mobile if needed, often make it darker universally */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 100%); /* Solidifies darkness on mobile */
+    }
     .hero-content {
         text-align: center; /* Center hero content on small screens */
         max-width: 90%; /* Constrain width for better readability */
@@ -872,33 +855,34 @@ section {
     }
 
     .service-list-grid {
-        grid-template-columns: 1fr; /* Stack service cards */
-        gap: 20px; /* Reduce gap */
+        grid-template-columns: 1fr; /* Still stacks vertically */
+        gap: 20px;
     }
     .service-list-grid > div {
-        padding: 20px; /* Adjust card padding */
+        /* Adjusted for more rectangular shape on mobile */
+        padding: 20px 25px; /* Top/Bottom: 20px, Left/Right: 25px */
+        width: 85%; /* Don't take full width, leave side margins */
+        margin-left: auto; /* Center the block */
+        margin-right: auto; /* Center the block */
     }
 
     .service-list-grid h3 {
-        font-size: 1.1em; /* Reduced font size for mobile service heading */
+        font-size: 1.1em;
         margin-bottom: 8px;
         padding-bottom: 8px;
     }
     .service-list-grid h3::after {
-        width: 30px; /* Slightly shorter underline on mobile */
+        width: 30px;
     }
     .service-list-grid p {
-        font-size: 0.9em; /* Smaller font size for service paragraphs on mobile */
+        font-size: 0.9em;
     }
 
 
     /* ABOUT US SECTION ALIGNMENT */
-    #about {
-        text-align: center;
-    }
     #about p {
-        text-align: center;
-        max-width: 90%; /* Adjust max-width for better fit */
+        text-align: center; /* Explicitly center paragraphs on mobile */
+        max-width: 90%; /* Adjust max-width for better fit on mobile */
         margin-left: auto;
         margin-right: auto;
     }
@@ -945,7 +929,7 @@ section {
         gap: 15px; /* Reduce gap */
     }
     .image-pair-gallery img {
-        width: 80%; /* Made smaller for mobile project gallery images */
+        width: 75%; /* Made slightly smaller for mobile to not take full width */
     }
     .cta-bottom-portfolio {
         font-size: 1em;
@@ -971,24 +955,7 @@ section {
     .contact-section {
         padding: 40px 0;
     }
-    .contact-form {
-        margin-top: 20px;
-        padding: 20px;
-    }
-    .form-group label {
-        font-size: 0.95em;
-    }
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group textarea {
-        padding: 10px; /* Slightly smaller input fields */
-        font-size: 0.95em;
-    }
-    .contact-form .btn-primary {
-        padding: 12px;
-        font-size: 1em;
-    }
+    /* No .contact-form styles needed here as it's removed */
 
     /* FOOTER */
     .site-footer {
@@ -1047,9 +1014,7 @@ section {
         right: 10px;
         max-width: unset;
     }
-    .contact-form {
-        padding: 15px;
-    }
+    /* No .contact-form styles needed here as it's removed */
     h2 {
         font-size: 1.6em; /* Smaller headings for very small screens */
     }
@@ -1057,12 +1022,16 @@ section {
         font-size: 1.1em;
     }
     .image-pair-gallery img {
-        width: 90%; /* Slight adjustment for very small screens if 80% is too small */
+        width: 85%; /* Slight adjustment for very small screens if 75% is too small */
+    }
+    .service-list-grid > div {
+        width: 90%; /* Adjust slightly for even smaller screens */
+        padding: 18px 22px; /* Slightly reduce padding if needed */
     }
     .service-list-grid h3 {
-        font-size: 1em; /* Further reduce font size for very small screens */
+        font-size: 1em;
     }
     .service-list-grid p {
-        font-size: 0.85em; /* Further reduce font size for service paragraphs on very small screens */
+        font-size: 0.85em;
     }
 }
