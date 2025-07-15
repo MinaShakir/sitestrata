@@ -425,7 +425,6 @@ section {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* !!! MODIFICATION START - Walkway Gallery Image Width for DESKTOP !!! */
 .walkway-gallery {
     display: flex;
     justify-content: center;
@@ -440,7 +439,6 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-/* !!! MODIFICATION END !!! */
 
 .cta-bottom-portfolio {
     margin-top: 50px;
@@ -577,16 +575,19 @@ section {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centers content horizontally */
     flex-wrap: wrap;
     gap: 30px;
     padding-bottom: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light border for dark background */
+    max-width: var(--max-width); /* Constrain width to align with main content */
+    margin: 0 auto; /* Center the footer content block itself */
 }
 
 .footer-column {
-    flex: 1;
     min-width: 250px;
+    /* Optional: If you want content *within* each column centered on desktop: */
+    /* text-align: center; */
 }
 
 .footer-column .logo-footer {
@@ -594,6 +595,8 @@ section {
     align-items: center; /* Ensures vertical alignment of footer logo image and text */
     gap: 10px;
     margin-bottom: 20px;
+    /* If parent .footer-column has text-align: center, also apply justify-content to center logo */
+    /* justify-content: center; */
 }
 .footer-column .logo-footer img {
     height: 50px;
@@ -622,6 +625,8 @@ section {
     position: relative;
     padding-bottom: 8px;
     color: var(--text-light); /* Footer headings are light */
+    /* If parent .footer-column has text-align: center, also center this heading */
+    /* text-align: center; */
 }
 
 .footer-column h4::after {
@@ -632,6 +637,9 @@ section {
     width: 40px;
     height: 2px;
     background-color: var(--secondary-color);
+    /* If parent .footer-column has text-align: center, also center the underline */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
 }
 
 .footer-column ul li {
@@ -658,6 +666,8 @@ section {
     gap: 10px;
     margin-bottom: 10px;
     opacity: 0.9;
+    /* If parent .footer-column has text-align: center, also center this */
+    /* justify-content: center; */
 }
 
 .contact-info-footer p .fas {
@@ -672,6 +682,8 @@ section {
     margin-top: 20px;
     display: flex;
     gap: 15px;
+    /* If parent .footer-column has text-align: center, also center this */
+    /* justify-content: center; */
 }
 
 .social-links a {
@@ -774,7 +786,6 @@ section {
     .image-pair-gallery img {
         width: 45%; /* Adjusted to be slightly smaller for tablets */
     }
-    /* !!! No change here for walkway images, as the desktop rule handles it, and mobile is separate !!! */
     h2 { /* Adjust main section headings */
         font-size: 2.2em;
     }
@@ -959,17 +970,14 @@ section {
         left: 0; /* Keep underline left-aligned within the card */
         transform: translateX(0);
     }
-    /* Images for side-by-side on mobile - NO CHANGE TO THESE MOBILE RULES */
+    /* Images for side-by-side on mobile */
     .image-pair-gallery {
-        /* Removed flex-direction: column; and align-items: center; to allow side-by-side */
         gap: 15px; /* Keep reduced gap */
     }
     .image-pair-gallery img {
         width: 48%; /* Adjusted width for two images side-by-side on mobile */
     }
     .walkway-gallery {
-        /* Ensuring it allows side-by-side as well */
-        /* Removed flex-direction: column; and align-items: center; if they were ever here */
         gap: 15px; /* Keep reduced gap */
     }
     .walkway-gallery img.project-img {
@@ -1085,7 +1093,7 @@ section {
     h3 {
         font-size: 1.1em;
     }
-    /* Images for side-by-side on very small mobile screens - NO CHANGE TO THESE MOBILE RULES */
+    /* Images for side-by-side on very small mobile screens */
     .image-pair-gallery img {
         width: 48%; /* Keep side-by-side on very small screens */
     }
