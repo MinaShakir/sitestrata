@@ -384,13 +384,16 @@ section {
     text-align: left;
 }
 
+/* !!! MODIFICATION START - Portfolio Headings Centered !!! */
 .portfolio-item h3 {
     font-size: 1.8em;
     color: var(--primary-color);
     margin-bottom: 15px;
     position: relative;
     padding-bottom: 10px;
+    text-align: center; /* Centered as requested */
 }
+/* !!! MODIFICATION END !!! */
 
 .portfolio-item h3::after {
     content: '';
@@ -402,14 +405,12 @@ section {
     background-color: var(--secondary-color);
 }
 
-/* !!! MODIFICATION START !!! */
 .portfolio-item p {
     margin-bottom: 20px;
     line-height: 1.7;
     color: var(--text-dark);
     text-align: center; /* Aligned paragraphs to center as requested */
 }
-/* !!! MODIFICATION END !!! */
 
 .image-pair-gallery {
     display: flex;
